@@ -19,6 +19,10 @@ public class Earthquake {
     private Double size;
     private Double quality;
     private String humanReadableLocation;
+    
+    public Earthquake(){
+        
+    }
 
     public Earthquake(Timestamp timestamp, Double latitude, Double longitude, Double depth, Double size, Double quality, String humanReadableLocation) {
         this.timestamp = timestamp;
