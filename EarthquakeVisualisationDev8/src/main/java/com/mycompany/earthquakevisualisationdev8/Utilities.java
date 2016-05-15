@@ -35,8 +35,8 @@ public class Utilities {
 
         PVector p = new PVector();
 
-        p.y = map(geoLocation.y, mapGeoLeft, mapGeoRight, 0, mapScreenWidth);
-        p.x = map(geoLocation.x, mapGeoTop, mapGeoBottom, 0, mapScreenHeight);
+        p.x = map(geoLocation.y, mapGeoLeft, mapGeoRight, 0, mapScreenWidth);
+        p.y = map(geoLocation.x, mapGeoTop, mapGeoBottom, 0, mapScreenHeight);
 
         return p;
     }
