@@ -1,6 +1,7 @@
 package com.mycompany.scattermatrix;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,8 +15,8 @@ import processing.core.PVector;
  */
 public class ProcessingApplet extends PApplet {
 
-    final static int windowHeight = 850;
-    final static int windowWidth = 850;
+    final static int windowHeight = 1100;
+    final static int windowWidth = 1100;
     static ArrayList<Student> parseResults;
     final int RED = color(255, 0, 0);
     final int ORANGE = color(255, 100, 0);
@@ -42,51 +43,138 @@ public class ProcessingApplet extends PApplet {
 
     @Override
     public void draw() {
+        // tile
+         text("Matrix Plot of Age and grades for ANA, DEV, PRJ and SKL", 360, 25);
+         
         fill(WHITE);
         //horizontal row 1
-        rect(25, 25, 200, 200); // DEV/DEV
-        rect(225, 25, 200, 200); // DEV/ANA
-        rect(425, 25, 200, 200); // DEV/PRJ
-        rect(625, 25, 200, 200); // DEV/SKL
+        rect(125, 125, 200, 200); // DEV/DEV
+        rect(325, 125, 200, 200); // DEV/ANA
+        rect(525, 125, 200, 200); // DEV/PRJ
+        rect(725, 125, 200, 200); // DEV/SKL
         //horizontal row 2
-        rect(25, 225, 200, 200);  // DEV/ANA
-        rect(225, 225, 200, 200); // ANA/ANA
-        rect(425, 225, 200, 200); // ANA/PRJ
-        rect(625, 225, 200, 200); // ANA/SKL
+        rect(125, 325, 200, 200);  // DEV/ANA
+        rect(325, 325, 200, 200); // ANA/ANA
+        rect(525, 325, 200, 200); // ANA/PRJ
+        rect(725, 325, 200, 200); // ANA/SKL
         //horizontal row 3
-        rect(25, 425, 200, 200);  //DEV/PRJ
-        rect(225, 425, 200, 200); //DEV/ANA
-        rect(425, 425, 200, 200); // PRJ/PRJ
-        rect(625, 425, 200, 200); // DEV/SKL
+        rect(125, 525, 200, 200);  //DEV/PRJ
+        rect(325, 525, 200, 200); //DEV/ANA
+        rect(525, 525, 200, 200); // PRJ/PRJ
+        rect(725, 525, 200, 200); // DEV/SKL
         //horizontal row 4
-        rect(25, 625, 200, 200); // SKL/DEV
-        rect(225, 625, 200, 200); //SKL/ANA
-        rect(425, 625, 200, 200); // SKL/PRJ
-        rect(625, 625, 200, 200); // SKL/SKL
+        rect(125, 725, 200, 200); // SKL/DEV
+        rect(325, 725, 200, 200); //SKL/ANA
+        rect(525, 725, 200, 200); // SKL/PRJ
+        rect(725, 725, 200, 200); // SKL/SKL
 
         fill(BLACK);
         textSize(14);
 
-        text("DEV", 110, 125);
-        text("ANA", 310, 325);
-        text("PRJ", 520, 525);
-        text("SKL", 720, 725);
+        text("DEV", 210, 225);
+        text("ANA", 410, 425);
+        text("PRJ", 620, 625);
+        text("SKL", 820, 825);
 
-        drawSection(225, 25, 200, 200, 2, 1, parseResults);
-        drawSection(425, 25, 200, 200, 3, 1, parseResults);
-        drawSection(625, 25, 200, 200, 4, 1, parseResults);
+        drawSection(325, 125, 200, 200, 2, 1, parseResults);
+        drawSection(525, 125, 200, 200, 3, 1, parseResults);
+        drawSection(725, 125, 200, 200, 4, 1, parseResults);
 
-        drawSection(25, 225, 200, 200, 1, 2, parseResults);
-        drawSection(425, 225, 200, 200, 3, 2, parseResults);
-        drawSection(625, 225, 200, 200, 4, 2, parseResults);
+        drawSection(125, 325, 200, 200, 1, 2, parseResults);
+        drawSection(525, 325, 200, 200, 3, 2, parseResults);
+        drawSection(725, 325, 200, 200, 4, 2, parseResults);
 
-        drawSection(25, 425, 200, 200, 1, 3, parseResults);
-        drawSection(225, 425, 200, 200, 2, 3, parseResults);
-        drawSection(625, 425, 200, 200, 4, 3, parseResults);
+        drawSection(125, 525, 200, 200, 1, 3, parseResults);
+        drawSection(325, 525, 200, 200, 2, 3, parseResults);
+        drawSection(725, 525, 200, 200, 4, 3, parseResults);
 
-        drawSection(25, 625, 200, 200, 1, 4, parseResults);
-        drawSection(225, 625, 200, 200, 2, 4, parseResults);
-        drawSection(425, 625, 200, 200, 3, 4, parseResults);
+        drawSection(125, 725, 200, 200, 1, 4, parseResults);
+        drawSection(325, 725, 200, 200, 2, 4, parseResults);
+        drawSection(525, 725, 200, 200, 3, 4, parseResults);
+
+//        for (int z = 0; z < 4; z++) {
+//            float lowestGrade = 0;
+//            float higestGrade = 0;
+//
+//            if (z == 0) {
+//                lowestGrade = TxtReader.lowestDEV;
+//                higestGrade = TxtReader.highestDEV;
+//            }
+//
+//            if (z == 1) {
+//                lowestGrade = TxtReader.lowestANA;
+//                higestGrade = TxtReader.highestANA;
+//            }
+//
+//            if (z == 2) {
+//                lowestGrade = TxtReader.lowestPRJ;
+//                higestGrade = TxtReader.highestPRJ;
+//            }
+//
+//            if (z == 3) {
+//                lowestGrade = TxtReader.lowestSKL;
+//                higestGrade = TxtReader.highestSKL;
+//            }
+        // line's on x
+        int numberOfSquare = 0;
+
+        for (int j = 125; j < 750; j = j + 200) {
+            int start = j;
+            int line = 115;
+
+            if (numberOfSquare % 2 == 0) {
+                line = 925;
+            }
+            numberOfSquare++;
+
+            float lowestGrade = 0;
+            float higestGrade = 0;
+
+            if (numberOfSquare == 1) {
+                lowestGrade = TxtReader.lowestDEV;
+                higestGrade = TxtReader.highestDEV;
+            }
+
+            if (numberOfSquare == 2) {
+                lowestGrade = TxtReader.lowestANA;
+                higestGrade = TxtReader.highestANA;
+            }
+
+            if (numberOfSquare == 3) {
+                lowestGrade = TxtReader.lowestPRJ;
+                higestGrade = TxtReader.highestPRJ;
+            }
+
+            if (numberOfSquare == 4) {
+                lowestGrade = TxtReader.lowestSKL;
+                higestGrade = TxtReader.highestSKL;
+            }
+
+            float gradeRange = (higestGrade - lowestGrade) / 5;
+            float currentGradeX = lowestGrade;
+            float currentGradeY = higestGrade;
+            DecimalFormat df = new DecimalFormat("#.#");
+            
+            
+            for (int i = start; i <= (start + 200); i = i + 40) {
+                // x lines
+                line(i, line, i, line + 10);
+                // y lines
+                line(line, i, line + 10, i);
+                
+                // for the deviation in placement of above and under, left and right
+                if (numberOfSquare % 2 == 0) {
+                    text(df.format(currentGradeX), i - 7, line - 5);
+                    text(df.format(currentGradeY), line - 30, i + 4);
+                } else {
+                    text(df.format(currentGradeX), i - 7, line + 30);
+                    text(df.format(currentGradeY), line + 15, i + 4);
+                }
+                currentGradeX = currentGradeX + gradeRange;
+                currentGradeY = currentGradeY - gradeRange;
+            }
+
+        }
 
     }
 
@@ -118,7 +206,6 @@ public class ProcessingApplet extends PApplet {
             int age = student.getAge();
             int minAge = TxtReader.youngest;
             int ageStep = (TxtReader.oldest - minAge) / 5;
-            
 
             switch (toMapToX) {
                 case 1:
@@ -140,16 +227,16 @@ public class ProcessingApplet extends PApplet {
 
             switch (toMapToY) {
                 case 1:
-                    mappedY = map((float) student.getGradeDEV(), lowestDEV, highestDEV, top, bottom);
+                    mappedY = map((float) student.getGradeDEV(), lowestDEV, highestDEV, bottom, top);
                     break;
                 case 2:
-                    mappedY = map((float) student.getGradeANA(), lowestANA, highestANA, top, bottom);
+                    mappedY = map((float) student.getGradeANA(), lowestANA, highestANA, bottom, top);
                     break;
                 case 3:
-                    mappedY = map((float) student.getGradePRJ(), lowestPRJ, highestPRJ, top, bottom);
+                    mappedY = map((float) student.getGradePRJ(), lowestPRJ, highestPRJ, bottom, top);
                     break;
                 case 4:
-                    mappedY = map((float) student.getGradeSKL(), lowestSKL, highestSKL, top, bottom);
+                    mappedY = map((float) student.getGradeSKL(), lowestSKL, highestSKL, bottom, top);
                     break;
                 default:
                     System.out.println("Invalid toMapToY");
