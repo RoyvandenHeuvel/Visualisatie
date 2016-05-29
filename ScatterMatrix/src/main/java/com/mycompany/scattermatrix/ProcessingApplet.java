@@ -92,30 +92,19 @@ public class ProcessingApplet extends PApplet {
         drawSection(325, 725, 200, 200, 2, 4, parseResults);
         drawSection(525, 725, 200, 200, 3, 4, parseResults);
 
-//        for (int z = 0; z < 4; z++) {
-//            float lowestGrade = 0;
-//            float higestGrade = 0;
-//
-//            if (z == 0) {
-//                lowestGrade = TxtReader.lowestDEV;
-//                higestGrade = TxtReader.highestDEV;
-//            }
-//
-//            if (z == 1) {
-//                lowestGrade = TxtReader.lowestANA;
-//                higestGrade = TxtReader.highestANA;
-//            }
-//
-//            if (z == 2) {
-//                lowestGrade = TxtReader.lowestPRJ;
-//                higestGrade = TxtReader.highestPRJ;
-//            }
-//
-//            if (z == 3) {
-//                lowestGrade = TxtReader.lowestSKL;
-//                higestGrade = TxtReader.highestSKL;
-//            }
-        // line's on x
+    }
+
+    public void drawSection(int x, int y, int width, int height, int toMapToX, int toMapToY, ArrayList<Student> list) {
+        float lowestANA = TxtReader.lowestANA;
+        float highestANA = TxtReader.highestANA;
+        float lowestDEV = TxtReader.lowestDEV;
+        float highestDEV = TxtReader.highestDEV;
+        float lowestPRJ = TxtReader.lowestPRJ;
+        float highestPRJ = TxtReader.highestPRJ;
+        float lowestSKL = TxtReader.lowestSKL;
+        float highestSKL = TxtReader.highestSKL;
+        
+                // line's on x
         int numberOfSquare = 0;
 
         for (int j = 125; j < 750; j = j + 200) {
@@ -131,23 +120,23 @@ public class ProcessingApplet extends PApplet {
             float higestGrade = 0;
 
             if (numberOfSquare == 1) {
-                lowestGrade = TxtReader.lowestDEV;
-                higestGrade = TxtReader.highestDEV;
+                lowestGrade = lowestDEV;
+                higestGrade = highestDEV;
             }
 
             if (numberOfSquare == 2) {
-                lowestGrade = TxtReader.lowestANA;
-                higestGrade = TxtReader.highestANA;
+                lowestGrade = lowestANA;
+                higestGrade = highestANA;
             }
 
             if (numberOfSquare == 3) {
-                lowestGrade = TxtReader.lowestPRJ;
-                higestGrade = TxtReader.highestPRJ;
+                lowestGrade = lowestPRJ;
+                higestGrade = highestPRJ;
             }
 
             if (numberOfSquare == 4) {
-                lowestGrade = TxtReader.lowestSKL;
-                higestGrade = TxtReader.highestSKL;
+                lowestGrade = lowestSKL;
+                higestGrade = highestSKL;
             }
 
             float gradeRange = (higestGrade - lowestGrade) / 5;
@@ -175,18 +164,6 @@ public class ProcessingApplet extends PApplet {
             }
 
         }
-
-    }
-
-    public void drawSection(int x, int y, int width, int height, int toMapToX, int toMapToY, ArrayList<Student> list) {
-        float lowestANA = TxtReader.lowestANA;
-        float highestANA = TxtReader.highestANA;
-        float lowestDEV = TxtReader.lowestDEV;
-        float highestDEV = TxtReader.highestDEV;
-        float lowestPRJ = TxtReader.lowestPRJ;
-        float highestPRJ = TxtReader.highestPRJ;
-        float lowestSKL = TxtReader.lowestSKL;
-        float highestSKL = TxtReader.highestSKL;
 
         int left;
         int right;
