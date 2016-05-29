@@ -13,6 +13,17 @@ import java.util.ArrayList;
  */
 public class TxtReader {
     
+    public static float lowestANA= Float.MAX_VALUE;
+    public static float lowestDEV= Float.MAX_VALUE;
+    public static float lowestSKL= Float.MAX_VALUE;
+    public static float lowestPRJ= Float.MAX_VALUE;
+    
+    public static float highestANA= Float.MIN_VALUE;
+    public static float highestDEV= Float.MIN_VALUE;
+    public static float highestSKL= Float.MIN_VALUE;
+    public static float highestPRJ= Float.MIN_VALUE;
+    
+    
     public static int youngest = Integer.MAX_VALUE;
     public static int oldest = Integer.MIN_VALUE;
     public static ArrayList<Student> students;
@@ -45,6 +56,33 @@ public class TxtReader {
             if(age < youngest){
                 youngest = age;
             }
+            if(lowestANA > gradeANA){
+                lowestANA = (float) gradeANA;
+            }
+            if(lowestDEV > gradeDEV){
+                lowestDEV = (float) gradeDEV;
+            }
+            if(lowestPRJ > gradePRJ){
+                lowestPRJ = (float) gradePRJ;
+            }
+            if(lowestSKL > gradeSKL){
+                lowestSKL = (float) gradeSKL;
+            }
+            
+            if(highestANA < gradeANA){
+                highestANA = (float) gradeANA;
+            }
+            if(highestDEV < gradeDEV){
+                highestDEV = (float) gradeDEV;
+            }
+            if(highestPRJ < gradePRJ){
+                highestPRJ = (float) gradePRJ;
+            }
+            if(highestSKL < gradeSKL){
+                highestSKL = (float) gradeSKL;
+            }
+            
+            
         }
         
         return students;
