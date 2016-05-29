@@ -7,7 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import processing.core.PApplet;
 import static processing.core.PApplet.map;
-import processing.core.PVector;
 
 /**
  *
@@ -44,8 +43,8 @@ public class ProcessingApplet extends PApplet {
     @Override
     public void draw() {
         // tile
-         text("Matrix Plot of Age and grades for ANA, DEV, PRJ and SKL", 360, 25);
-         
+        text("Matrix Plot of Age and grades for ANA, DEV, PRJ and SKL", 360, 25);
+
         fill(WHITE);
         //horizontal row 1
         rect(125, 125, 200, 200); // DEV/DEV
@@ -103,8 +102,8 @@ public class ProcessingApplet extends PApplet {
         float highestPRJ = TxtReader.highestPRJ;
         float lowestSKL = TxtReader.lowestSKL;
         float highestSKL = TxtReader.highestSKL;
-        
-                // line's on x
+        fill(BLACK);
+        // line's on x
         int numberOfSquare = 0;
 
         for (int j = 125; j < 750; j = j + 200) {
@@ -143,14 +142,13 @@ public class ProcessingApplet extends PApplet {
             float currentGradeX = lowestGrade;
             float currentGradeY = higestGrade;
             DecimalFormat df = new DecimalFormat("#.#");
-            
-            
+
             for (int i = start; i <= (start + 200); i = i + 40) {
                 // x lines
                 line(i, line, i, line + 10);
                 // y lines
                 line(line, i, line + 10, i);
-                
+
                 // for the deviation in placement of above and under, left and right
                 if (numberOfSquare % 2 == 0) {
                     text(df.format(currentGradeX), i - 7, line - 5);
@@ -174,6 +172,29 @@ public class ProcessingApplet extends PApplet {
         right = x + width;
         top = y;
         bottom = y + height;
+        
+            int minAge = TxtReader.youngest;
+            int ageStep = (TxtReader.oldest - minAge) / 5;
+            
+            //legenda
+            fill(BLUE);
+            ellipse(940, 836, 5, 5);
+            fill(GREEN);
+            ellipse(940, 856, 5, 5);
+            fill(YELLOW);
+            ellipse(940, 876, 5, 5);
+            fill(ORANGE);
+            ellipse(940, 896, 5, 5);
+            fill(RED);
+            ellipse(940, 916, 5, 5);
+            fill(BLUE);
+            
+            text("Legenda:", 950, 820);
+            text("Jonger dan " + (minAge + ageStep) +" jaar", 950, 840);
+            text("Tussen " + (minAge + ageStep) + " en " +  (minAge + ageStep * 2) + " jaar" , 950, 860);
+            text("Tussen " + (minAge + ageStep * 2) + " en " +  (minAge + ageStep * 3) + " jaar" , 950, 880);
+            text("Tussen " + (minAge + ageStep* 3) + " en " +  (minAge + ageStep * 4) + " jaar" , 950, 900);
+            text("Ouder dan " + (minAge + ageStep * 4) + " jaar", 950, 920);
 
         for (Student student : list) {
 
@@ -181,8 +202,7 @@ public class ProcessingApplet extends PApplet {
             float mappedY;
 
             int age = student.getAge();
-            int minAge = TxtReader.youngest;
-            int ageStep = (TxtReader.oldest - minAge) / 5;
+
 
             switch (toMapToX) {
                 case 1:
