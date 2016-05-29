@@ -17,7 +17,7 @@ public class TxtReader {
     public static int oldest = Integer.MIN_VALUE;
     public static ArrayList<Student> students;
     
-    public static void parseTxt() throws FileNotFoundException, IOException{
+    public static ArrayList<Student> parseTxt() throws FileNotFoundException, IOException{
         BufferedReader br = new BufferedReader(new FileReader(new File("studentcijfers.txt")));
         
         br.readLine(); // skip the first line of the file.
@@ -46,6 +46,8 @@ public class TxtReader {
                 youngest = age;
             }
         }
+        
+        return students;
     }
     
     public static String commasToPeriods(String stringWithCommas){
