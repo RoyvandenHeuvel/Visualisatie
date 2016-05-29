@@ -116,8 +116,9 @@ public class ProcessingApplet extends PApplet {
             float mappedY;
 
             int age = student.getAge();
-            int ageStep = (TxtReader.oldest - TxtReader.youngest) / 5;
             int minAge = TxtReader.youngest;
+            int ageStep = (TxtReader.oldest - minAge) / 5;
+            
 
             switch (toMapToX) {
                 case 1:

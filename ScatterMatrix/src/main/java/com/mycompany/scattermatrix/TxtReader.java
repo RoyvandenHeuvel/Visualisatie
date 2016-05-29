@@ -47,7 +47,8 @@ public class TxtReader {
             double gradePRJ = Double.parseDouble(commasToPeriods(splitLine[4]));
             double gradeSKL = Double.parseDouble(commasToPeriods(splitLine[5]));
             
-            Student stdnt = new Student(studentNumber, age, gradeANA, gradeDEV, gradePRJ, gradeSKL);
+            Student stdnt = new Student(studentNumber, age, gradeDEV, gradeANA, gradePRJ, gradeSKL);
+            
             students.add(stdnt);
             
             if(age > oldest){
